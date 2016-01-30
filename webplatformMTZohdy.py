@@ -8,7 +8,7 @@ import string
 import random
 
 render = web.template.render('/media/serverdisk/MTZohdy/templates/')
-
+webaddress = 'marwanirnaka.duckdns.org'
 urls = ('/', 'index','/images/(.*)','images')
 app = web.application(urls, globals())
 
@@ -109,16 +109,16 @@ class index:
                 if plotly_success:
                     return render.imdisplay(str(calculID), \
                                         'images/out'+calculID+'.png', \
-                                        'http://104.196.29.119:8000/data_'+calculID+'.txt', \
-                                        'http://104.196.29.119:8000/iter_'+calculID+'.txt', \
-                                        'http://104.196.29.119:8000/out_'+calculID+'.txt',plotlyplot=True)
+                                        'http://'+webaddress+':8000/data_'+calculID+'.txt', \
+                                        'http://'+webaddress+':8000/iter_'+calculID+'.txt', \
+                                        'http://'+webaddress+':8000/out_'+calculID+'.txt',plotlyplot=True)
                     #return web.seeother('https://plot.ly/~irnaka/107.embed')
                 else:
                     return render.imdisplay(str(calculID), \
                                         'images/out'+calculID+'.png', \
-                                        'http://104.196.29.119:8000/data_'+calculID+'.txt', \
-                                        'http://104.196.29.119:8000/iter_'+calculID+'.txt', \
-                                        'http://104.196.29.119:8000/out_'+calculID+'.txt',plotlyplot=False)
+                                        'http://'+webaddress+':8000/data_'+calculID+'.txt', \
+                                        'http://'+webaddress+':8000/iter_'+calculID+'.txt', \
+                                        'http://'+webaddress+':8000/out_'+calculID+'.txt',plotlyplot=False)
             else:
                 # check ID existence
                 import os
@@ -131,9 +131,9 @@ class index:
                     tmp = filelist.index('out_'+calculID+'.txt')
                     return render.imdisplay(str(calculID), \
                                 'images/out'+calculID+'.png', \
-                                'http://104.196.29.119:8000/data_'+calculID+'.txt', \
-                                'http://104.196.29.119:8000/iter_'+calculID+'.txt', \
-                                'http://104.196.29.119:8000/out_'+calculID+'.txt',plotlyplot=False)
+                                'http://'+webaddress+':8000/data_'+calculID+'.txt', \
+                                'http://'+webaddress+':8000/iter_'+calculID+'.txt', \
+                                'http://'+webaddress+':8000/out_'+calculID+'.txt',plotlyplot=False)
                 except ValueError:
                     return render.formtest(form,form2,calculIDerror=True)
         
